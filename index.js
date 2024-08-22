@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 app.use(cors({
@@ -11,7 +12,7 @@ const authRoutes = require('./routes/authRoutes');
 const homeRoutes = require('./routes/homeRoutes');
 const headerRoutes = require('./routes/headerRoutes');
 const fileUpload= require('express-fileupload')
-const app = express();
+
 connectDB();
 
 app.use(fileUpload({
