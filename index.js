@@ -14,7 +14,7 @@ app.use(fileUpload({
 }))
 app.use(cors(
   {
-      origin:["https://cp-frontend-o29c.onrender.com"],
+      origin:["https://csc-tau.vercel.app/"],
       methods:["POST","PUT","DELETE","GET"],
       credentials:true
   }
