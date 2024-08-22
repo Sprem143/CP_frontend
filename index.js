@@ -1,6 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+app.use(cors({
+  origin: true,
+  methods: ["POST", "PUT", "DELETE", "GET"],
+  credentials: true
+}));
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const homeRoutes = require('./routes/homeRoutes');
@@ -12,13 +17,7 @@ connectDB();
 app.use(fileUpload({
   useTempFiles:true
 }))
-app.use(cors(
-  {
-      origin:["https://csc-tau.vercel.app/"],
-      methods:["POST","PUT","DELETE","GET"],
-      credentials:true
-  }
-));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
