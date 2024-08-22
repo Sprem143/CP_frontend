@@ -16,7 +16,7 @@ app.use(fileUpload({
   useTempFiles:true
 }))
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin:'https://cp-frontend-o29c.onrender.com',
   credentials: true
 }));
 app.use(express.json());
