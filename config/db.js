@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  try {
-    await mongoose.connect('mongodb://127.0.0.1/mern-jwt-auth');
-    console.log('Database connected');
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
+  
+  const DB= "mongodb+srv://prem:Prem7366@cluster0.hmjxes4.mongodb.net/mernProject?retryWrites=true&w=majority&appName=Cluster0"
+  mongoose.connect(DB).then(()=>{
+      console.log("databse connected")
+  }).catch((err)=>console.log(err))
 };
 
 module.exports = connectDB;

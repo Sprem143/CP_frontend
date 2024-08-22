@@ -13,11 +13,13 @@ exports.verifyToken= async(req, res)=>{
 }
 
 exports.register = async (req, res) => {
-  const { username, password } = req.body;
+  const{username,password}= req.body;
+  console.log("Function called")
+  console.log(req.body)
   try {
     const newUser = new User({ username, password });
     await newUser.save();
-    res.status(200).send('Successfully registered');
+    res.status(200).json({message:"user created"});
   } catch (err) {
     res.status(500).send(err);
   }

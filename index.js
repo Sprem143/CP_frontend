@@ -9,15 +9,12 @@ const fileUpload= require('express-fileupload')
 const app = express();
 connectDB();
 
-// Middleware
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
 app.use(fileUpload({
   useTempFiles:true
 }))
 app.use(cors(
   {
-      origin:["https://csc-tau.vercel.app/"],
+      origin:["https://cp-frontend-o29c.onrender.com"],
       methods:["POST","PUT","DELETE","GET"],
       credentials:true
   }
