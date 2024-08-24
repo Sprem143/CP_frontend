@@ -8,5 +8,4 @@ router.post('/login', login);
 router.get('/user', authenticateJWT, getUser);
 router.post('/logout', logout);
 router.post('/verifyToken',authenticateJWT, verifyToken);
-console.log("auth router hit")
 module.exports = router;

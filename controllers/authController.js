@@ -2,7 +2,6 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secret = 'mysecret';
-const verifyToken= require('../middleware/authenticate');
 
 exports.verifyToken= async(req, res)=>{
   try{
@@ -14,7 +13,6 @@ exports.verifyToken= async(req, res)=>{
 
 exports.register = async (req, res) => {
   const{username,password}= req.body;
-  console.log("Function called")
   console.log(req.body)
   try {
     const newUser = new User({ username, password });
