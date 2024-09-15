@@ -2,8 +2,8 @@ const Home = require('../models/Home');
 
 exports.addContentToHome = async (req, res) => {
   try {
-    let { tagName, data } = req.body;
-    let home = new Home({ tagName, data });
+    let {page, data } = req.body;
+    let home = new Home({page, data });
     const result = await home.save();
     res.status(200).json(result);
   } catch (err) {
@@ -13,7 +13,8 @@ exports.addContentToHome = async (req, res) => {
 
 exports.getHomePageContent= async(req,res)=>{
   try{
-    let data = await Home.findOne({tagName:'home'});
+    let data = await Home.findOne({page:'home'});
+    // console.log(data)
     res.status(200).send(data.data)
   }catch(err){
   res.status(201).send("error while loading data")
@@ -23,16 +24,14 @@ exports.getHomePageContent= async(req,res)=>{
 exports.updateContent = async (req, res) => {
   try {
     const { content, id } = req.body;  // `id` would correspond to "about"
-    console.log("Content:", content, "ID:", id);
-
     let updateField = `data.${id}`; // Dynamically create the field to update
     let result = await Home.findOneAndUpdate(
-      { tagName: 'home' }, // Find the document with tagName 'home'
+      { page: 'home' }, // Find the document with tagName 'home'
       { $set: { [updateField]: content } }, // Update the specific field within `data`
       { new: true }
     );
 
-    console.log("Result:", result);
+    // console.log("Result:", result);
 
     if (!result) {
       return res.status(404).json({ ok: false, message: 'Document not found or no matching field' });
